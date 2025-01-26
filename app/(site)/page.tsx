@@ -6,17 +6,20 @@ import { useEffect, useState } from "react";
 import { Songs } from "@/types_db";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import PageContent from "./PageContent";
+interface SongResponse {
+  data: any;
+}
 export default function Home() {
   const [songs,setSongs]=useState<Songs[]>([])
   const supabaseClient=useSupabaseClient()
   useEffect(()=>{
     const Getsongs=async()=>{
       try {
-      const songs=await supabaseClient.from('songs').select('*').order('created_at',{ascending:false}) as any; 
-      console.log("songs",songs)
+      const songs:unknown=await supabaseClient.from('songs').select('*').order('created_at',{ascending:false}); 
+      const data = (songs as SongResponse).data;
 
       if(songs){
-setSongs(songs.data)
+setSongs(data)
       }
       } catch (error) {
         console.error(error)
