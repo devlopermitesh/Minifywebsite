@@ -38,9 +38,9 @@ const Sidebar:React.FC<SidebarProps> = ({children}) => {
     useEffect(()=>{
       const getsongsByUserId=async()=>{
        try {
-        console.log("user id",user?.id)
         const songs=await supabaseclient.from('songs').select('*').eq('user_id',user?.id).order('created_at',{ascending:false}) as any;
         if(songs.data){
+          
        setsongsUserId(songs.data)
         }
 

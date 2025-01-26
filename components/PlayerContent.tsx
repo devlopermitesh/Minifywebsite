@@ -54,16 +54,25 @@ const PlayerContent:React.FC<PlayerContentProps> = ({Song,keyIndex,SongUrl}) => 
             switch (playMode) {
                 case PlayMode.Queue:
                     onPlayNext();
+                  setIsPlaying(true);
+
                     break;
                 case PlayMode.Repeat:
                     sound?.play();
+                  setIsPlaying(true);
+
                     break;
                 case PlayMode.Shuffle:
                     const randomIndex = Math.floor(Math.random() * player.ids.length);
                     player.setActiveId(player.ids[randomIndex]);
+                  setIsPlaying(true);
+
+                    break;
+                default:
+                    setIsPlaying(false)
                     break;
             }
-            setIsPlaying(false);
+
         },
         onpause: () => setIsPlaying(false),
         format: ['mp3']

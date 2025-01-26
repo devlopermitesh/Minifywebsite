@@ -5,10 +5,10 @@ import React from 'react'
 import { FaPlay } from 'react-icons/fa'
 import { twMerge } from 'tailwind-merge'
 
-const MediaItem = ({keyvalue, Song,className,onclick}:{Song:Songs,keyvalue:number,className?:string,onclick?:()=>void}) => {
+const MediaItem = ({keyvalue, Song,className,onclick}:{Song:Songs,keyvalue:number,className?:string,onclick?:(id:number)=>void}) => {
     const public_url=useLoadingImage(Song)
   return (
-    <div key={keyvalue} className={twMerge(`flex items-center gap-x-2`,className)} onClick={onclick}>
+    <div key={keyvalue} className={twMerge(`flex items-center gap-x-2`,className)} onClick={()=>onclick && onclick(Song.id)}>
   <Image 
     src={public_url ? public_url : "/images/liked.png"} 
     alt={Song.title} 

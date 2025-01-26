@@ -1,27 +1,26 @@
 "use client"
 import React from 'react'
 import { PlayMode as PlayModeType } from './PlayerContent'
-import { ImLoop } from "react-icons/im";
-import { MdOutlineRepeatOne } from "react-icons/md";
-import { IoShuffleOutline } from "react-icons/io5";
+import { MdOutlineRepeat, } from "react-icons/md";
+import { IoShuffle,} from "react-icons/io5";
 import { GiMusicalScore } from "react-icons/gi";
+import { FaListUl } from 'react-icons/fa';
 interface PlayModeProps {
   Mode: PlayModeType  ,
   changeMode:()=>void,
   className?:string
 }
-
 function GetIcon(Mode: PlayModeType) {
-    switch (Mode) {
-        case PlayModeType.Queue:
-            return IoShuffleOutline; // Shuffle icon
-        case PlayModeType.Repeat:
-            return MdOutlineRepeatOne; // Repeat one icon
-        case PlayModeType.Shuffle:
-            return ImLoop; // Loop icon
-        default:
-            return GiMusicalScore; // Default musical score icon
-    }
+  switch (Mode) {
+      case PlayModeType.Queue:
+          return FaListUl;
+      case PlayModeType.Repeat:
+          return MdOutlineRepeat; // Repeat icon
+      case PlayModeType.Shuffle:
+          return IoShuffle; // Shuffle icon
+      default:
+          return GiMusicalScore; // Default musical score icon
+  }
 }
 
 const PlayModeButton: React.FC<PlayModeProps> = ({ Mode,changeMode,className }) => {

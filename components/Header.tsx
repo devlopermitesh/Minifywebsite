@@ -11,11 +11,13 @@ import { useSupabaseClient } from '@supabase/auth-helpers-react'
 import { useUser } from '@/hook/useUser'
 import { FaUserAlt } from 'react-icons/fa'
 import { toast } from 'react-toastify'
+import usePlayer from '@/hook/usePlayer'
 interface HeaderProps {
  children:React.ReactNode   
  className?:string
 }
 const Header:React.FC<HeaderProps> = ({children,className}) => {
+    const Player=usePlayer()
     const {onOpen}=useAuthModel((state)=>state)
     const superbaseclienrt=useSupabaseClient()
     const {user}=useUser()
@@ -26,8 +28,10 @@ if(error){
     toast.error(error.message,{theme:"colored"})
 }
 else{
+
     toast.success("Logged out",{theme:"colored",})
 }
+Player.reset();
 router.refresh()     
  }
 
