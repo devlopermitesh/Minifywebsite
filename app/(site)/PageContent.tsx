@@ -15,7 +15,7 @@ const PageContent:React.FC<PageContentProps> = ({Songs}) => {
     }
   return (
     <div className='grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 mt-4'>
-        {Songs.map((song,index)=>(<Songitem key={song.id} data={song} onclick={()=>{PlaySong(song.id)}} keyvalue={song.id}></Songitem>))}
+        {Songs.map((song)=>(<Songitem key={song.id} data={song} onclick={()=>{PlaySong(song.id)}} keyvalue={song.id}></Songitem>))}
     </div>
   )
 }
