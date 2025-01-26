@@ -12,7 +12,6 @@ import { toast } from 'react-toastify'
 
 const Page = () => {
   const router=useRouter()
-  const subscribeModal=useSubscribeModel()
   const [loading,setloading]=useState(false)
   const {subscription,user,isloading}=useUser()
 
