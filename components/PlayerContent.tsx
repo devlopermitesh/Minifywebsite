@@ -3,7 +3,7 @@ import React,{ useEffect } from 'react'
 import MediaItem from './MediaItem'
 import LikeButton from './LikeButton'
 import { FaPause, FaPlay } from "react-icons/fa";
-import { AiFillForward, AiFillStepBackward, AiFillStepForward } from 'react-icons/ai';
+import { AiFillStepBackward, AiFillStepForward } from 'react-icons/ai';
 import { FaVolumeXmark } from "react-icons/fa6";
 import { IoVolumeHigh } from 'react-icons/io5';
 import Slider from './Slider';

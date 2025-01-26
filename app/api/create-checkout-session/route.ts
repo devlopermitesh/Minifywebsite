@@ -1,10 +1,9 @@
 import { createServerClient } from '@supabase/ssr'
-import { headers,cookies } from "next/headers";
+import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import {stripe} from "../../../lib/stripe"
 import {getUrl} from "../../../lib/helpers"
 import {retrievCustomer} from "../../../lib/SupaBaseAdmin"
-import { Database } from "@/types_db";
 
 export async function POST(request: NextRequest) {
     const {price,quantity=1,metadata={}}=await request.json();

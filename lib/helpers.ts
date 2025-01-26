@@ -26,8 +26,7 @@ export const Postdata=async (url:string,data?:{price:Price})=>{
 
 
 export const TodateTime=(secs:number)=>{
-    let t=new Date('1970-01-01T00:00:00Z')
+    const t=new Date('1970-01-01T00:00:00Z')
     t.setSeconds(secs)
     return t
 }
-

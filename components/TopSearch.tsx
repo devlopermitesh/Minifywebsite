@@ -1,3 +1,4 @@
+"use client"
 import { useLoadingImage } from '@/hook/useLoadingImage'
 import { Songs } from '@/types_db'
 import Image from 'next/image'
@@ -8,7 +9,7 @@ interface TopSearchProps {
     className?:string,
     onclick:()=>void,
 }
-const TopSearch:React.FC<TopSearchProps> = ({data,className,onclick}) => {
+const TopSearch:React.FC<TopSearchProps> = ({data,onclick}) => {
     const imagePath =useLoadingImage(data)
   return (
 

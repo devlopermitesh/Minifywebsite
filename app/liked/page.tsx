@@ -9,7 +9,7 @@ import { useUser } from '@/hook/useUser'
 import { BiLoader } from 'react-icons/bi'
 import { useRouter } from 'next/navigation'
 import SongContent from '../search/SongContent'
-const page = () => {
+const Page= () => {
     const [loading,setisloading]=useState(true)
     const [songs,setSongs]=useState<Songs[]>([])
     const supabaseclient=useSupabaseClient()
@@ -62,4 +62,4 @@ if(loading){
         </div>
   )
 }
-export default page
+export default Page

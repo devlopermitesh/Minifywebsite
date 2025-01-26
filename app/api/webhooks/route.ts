@@ -2,7 +2,7 @@ import Stripe from "stripe";
 import { NextResponse } from "next/server";
 import { headers } from "next/headers";
 import {stripe} from "@/lib/stripe";
-import { upsertProductRecords,  upertPriceRecords,manageSubscriptionStatusChange,retrievCustomer } from "@/lib/SupaBaseAdmin";
+import { upsertProductRecords,  upertPriceRecords,manageSubscriptionStatusChange, } from "@/lib/SupaBaseAdmin";
 
 const relevantEvents = new Set([
     'product.created',

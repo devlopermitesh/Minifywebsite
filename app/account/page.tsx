@@ -10,7 +10,7 @@ import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
-const page = () => {
+const Page = () => {
   const router=useRouter()
   const subscribeModal=useSubscribeModel()
   const [loading,setloading]=useState(false)
@@ -20,8 +20,7 @@ useEffect(()=>{
     if(!isloading && !user){
 router.replace('/')
     }
-},[user,subscription])
-
+},[user,subscription,router,isloading])
 const redirectTocustomerPortal=async()=>{
   setloading(true)
   try {
@@ -61,4 +60,4 @@ const redirectTocustomerPortal=async()=>{
     )
 }
 
-export default page
+export default Page

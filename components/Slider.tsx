@@ -1,4 +1,4 @@
-import React, { FormEvent } from 'react'
+import React from 'react'
 import * as RadixSlider from "@radix-ui/react-slider";
 interface SliderProps {
     value:number,

@@ -38,7 +38,7 @@ const Sidebar:React.FC<SidebarProps> = ({children}) => {
     useEffect(()=>{
       const getsongsByUserId=async()=>{
        try {
-        const songs=await supabaseclient.from('songs').select('*').eq('user_id',user?.id).order('created_at',{ascending:false}) as any;
+        const songs=await supabaseclient.from('songs').select('*').eq('user_id',user?.id).order('created_at',{ascending:false});
         if(songs.data){
           
        setsongsUserId(songs.data)
@@ -50,7 +50,7 @@ const Sidebar:React.FC<SidebarProps> = ({children}) => {
        } 
       }
       getsongsByUserId()
-    },[user])
+    },[user,supabaseclient])
   return (
     <div className={twMerge(` flex h-full `,player.activeId && "h-[calc(100%-80px)]")}>
         <div className='hidden md:flex flex-col space-y bg-black w-[300px] p-2 '>

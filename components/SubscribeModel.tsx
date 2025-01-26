@@ -26,7 +26,7 @@ const FormatPrice=(price:Price):string=>{
 
 }
 const SubscribeModel = () => {
-    const {onClose,isOpen,onOpen:onOpenSubscribe}=useSubscribeModel()
+    const {onClose,isOpen}=useSubscribeModel()
     const [products,setproducts]=useState<ProductWithPrice[]>([])
     const [loading,setloading]=useState<boolean>(false)
     const {user,subscription}=useUser()
@@ -82,10 +82,10 @@ catch (error) {
 }
 fetchProduct()
 
-    },[user])
+    },[user,supabaseuser,onOpen])
 
   return (
-    <Modals title='Only for Premium user'  description='by subscribing you can get access to premium features' isopen={isOpen} onchange={(open)=>onClose()}>
+    <Modals title='Only for Premium user'  description='by subscribing you can get access to premium features' isopen={isOpen} onchange={()=>onClose()}>
         
 {(products.length===0)?(
     <div >

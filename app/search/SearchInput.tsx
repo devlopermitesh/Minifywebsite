@@ -7,20 +7,19 @@ import { toast } from 'react-toastify'
 import { useDebounceValue } from 'usehooks-ts'
 import  qs from 'query-string';
 import SongContent from './SongContent'
+import { Songs } from '@/types_db'
 const SearchInput = () => {
     const [isSearching, setIsSearching] = useState(false)
     const [search, setSearch] = useState('')
-    const [searchMessage, setSearchMessage] = useState('')
     const supabaseClient = useSupabaseClient()
     const [searchData, setSearchData] = useState([])
     const router = useRouter()
     // Debouncing search value itself
-    const [debouncedSearchValue, setDebouncedSearchValue] = useDebounceValue(search, 500)
+    const [debouncedSearchValue] = useDebounceValue(search, 500)
 // Search function optimized with async handling without url push
     // Search function optimized with async handling
     const handleSearch = useCallback(async (title: string) => {
         setIsSearching(true)
-        setSearchMessage('')
         try {
             const { data, error } = await supabaseClient
                 .from('songs')
@@ -34,14 +33,14 @@ const SearchInput = () => {
 
             if (data) {
                 if (data.length === 0) {
-                    setSearchMessage('No results found')
                     setSearchData([])
                 } else {
-                    setSearchData(data as any)
+                    setSearchData(data as unknown as Songs[])
                 }
             }
         } catch (error) {
             toast.error('Error occurred while searching')
+            console.log(error)
         } finally {
             setIsSearching(false)
         }

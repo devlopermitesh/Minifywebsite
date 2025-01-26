@@ -5,7 +5,7 @@ import {stripe} from '@/lib/stripe'
 import { getUrl } from '@/lib/helpers'
 import { retrievCustomer } from '@/lib/SupaBaseAdmin'
 
-export async function POST(request:NextRequest){
+export async function POST(){
   const cookieStore = await cookies()
   try {
     const supabase=await createServerClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!, { cookies: { getAll: () => cookieStore.getAll(), setAll: (cookiesToSet) => { try { cookiesToSet.forEach(({ name, value, options }) => cookieStore.set(name, value, options)) } catch {} } } });

@@ -2,7 +2,6 @@ import { useLoadingImage } from '@/hook/useLoadingImage'
 import { Songs } from '@/types_db'
 import Image from 'next/image'
 import React from 'react'
-import { FaPlay } from 'react-icons/fa'
 import { twMerge } from 'tailwind-merge'
 
 const MediaItem = ({keyvalue, Song,className,onclick}:{Song:Songs,keyvalue:number,className?:string,onclick?:(id:number)=>void}) => {

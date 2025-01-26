@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
 import { toast } from 'react-toastify'
-import { twMerge } from 'tailwind-merge'
 
 const LikeButton = ({songId,className}:{songId:number,className?:string}) => {
     const [isLiked, setIsLiked] = useState(false)
@@ -39,7 +38,7 @@ router.refresh()
 }
 }
 FetchlikedSongs()
-    },[supabaseclient,user?.id,songId])
+    },[supabaseclient,user?.id,songId,router])
     const likeSong=async()=>{
 
 try {

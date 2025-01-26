@@ -16,9 +16,7 @@ function Library({Songs}:{Songs:Songs[]}) {
   const {onOpen}=useAuthModel((state)=>state)
   const {onOpen:subscribeOpen}=useSubscribeModel((state)=>state)
   const {onOpen:uploadOpen}=useuploadModel((state)=>state)
-  const supabaseclient=useSupabaseClient()
   const playSong=useplaysong({songs:Songs})
-  const [SongsPlaylist,setSongsPlaylist]=React.useState<Songs[]>([])
   const handleAdd=()=>{
     if(!user){
         return onOpen()
@@ -30,11 +28,6 @@ function Library({Songs}:{Songs:Songs[]}) {
     uploadOpen()
     
   }
-useEffect(()=>{
-  if(!Songs) return
-    
-    setSongsPlaylist(Songs)
-},[Songs])
 
   return (
    <div className='flex flex-col relative z-10 '>

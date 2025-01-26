@@ -1,7 +1,6 @@
 import { Database } from "@/types_db";
 import { createBrowserClient } from "@supabase/ssr";
 import Stripe from "stripe";
-import { Price, Product } from "@/types";
 import { TodateTime } from "./helpers"; 
 import {stripe} from "./stripe"
 export const supabaseAdmin = createBrowserClient<Database>(
@@ -22,7 +21,7 @@ const upsertProductRecords = async (product: Stripe.Product) => {
     if (!ProductData.id) {
       throw new Error('Product ID is required');
     }
-//@ts-ignore
+
     const { error } = await supabaseAdmin.from("products").upsert([ProductData]);
 
     if (error) {
