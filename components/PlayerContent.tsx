@@ -127,7 +127,7 @@ setPlayMode(prevMode => {
                 </div>
                 </div>
             {/* //mobile view  */}
-            <div className='flex justify-end items-center md:hidden w-full border'>
+            <div className='flex justify-end items-center md:hidden w-full '>
 <div className='h-10 w-10 bg-white text-black flex justify-center items-center rounded-full p-2 cursor-pointer'>
 <Icon onClick={handlePlay} size={25} className='text-black text-sm z-50'/>
 </div>

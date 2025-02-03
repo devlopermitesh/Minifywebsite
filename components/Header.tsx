@@ -51,10 +51,10 @@ router.refresh()
     {/* mobile view header  */}
     <div className='flex md:hidden gap-x-2 items-center '>
     <button className=' bg-white rounded-full p-2 hover:bg-neutral-100 transition border flex justify-center items-center' >
-    <HiHome size={20} className='text-black '/>
+    <HiHome size={20} className='text-black ' onClick={()=>router.push(`/`)}/>
     </button>
     <button className=' bg-white rounded-full p-2 hover:bg-neutral-100 transition border flex justify-center items-center' >
-    <BiSearch size={20} className='text-black '/>
+    <BiSearch size={20} className='text-black '  onClick={()=>router.push(`/search`)}/>
     </button>
     </div>
     <div className=' flex justify-between items-center gap-x-2'>
