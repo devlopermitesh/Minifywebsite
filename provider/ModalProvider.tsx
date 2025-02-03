@@ -1,6 +1,5 @@
 "use client"
 
-import Modals from '@/components/Modals'
 import React, { useEffect } from 'react'
 import AuthModelProvider from './AuthModelProvider'
 import UploadModelProvider from './UploadModelProvider'

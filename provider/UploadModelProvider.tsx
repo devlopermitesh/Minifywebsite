@@ -2,8 +2,8 @@
 import Modals from '@/components/Modals'
 import { useuploadModel } from '@/hook/useUploadModel'
 import { useRouter } from 'next/navigation'
-import React, { useEffect, useState } from 'react'
-import {Controller, SubmitHandler, useForm} from "react-hook-form"
+import React,{ useState } from 'react'
+import { SubmitHandler, useForm} from "react-hook-form"
 import * as z from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Input } from '@/components/Input'
@@ -45,7 +45,7 @@ const UploadModelProvider = () => {
         
         },
       });
-      const { register, handleSubmit, formState: { errors } ,control,setValue,reset} = methods;
+      const { register, handleSubmit, formState: { errors } ,setValue,reset} = methods;
 const onSubmit: SubmitHandler<z.infer<typeof uploadsongSchema>> = async (data) => {
 try {
   setIsSubmitting(true)
@@ -94,6 +94,7 @@ try {
   router.refresh()
   
 } catch (error) {
+  console.log("Error",error)
   toast.error("Something went wrong please try again latter", {theme:"colored"})
 }
 finally{
@@ -102,8 +103,7 @@ finally{
 }
 }
   return (
-    <Modals title='Upload Song' description='upload an mp3 files 'isopen={isOpen} onchange={isOpen ? onClose : onOpen}
-     children={<>
+    <Modals title='Upload Song' description='upload an mp3 files 'isopen={isOpen} onchange={isOpen ? onClose : onOpen}>
     <form onSubmit={handleSubmit(onSubmit)} className=''>
     <Input placeholder='title ' id='title' type="text" disabled={isSubmitting} {...register('title')} />
     {(errors && <p className={twMerge('text-red-500 text-sm')}>{errors.title?.message}</p>)}
@@ -142,7 +142,8 @@ finally{
     <Button disabled={isSubmitting} type='submit'>
         Create
     </Button>
-    </form></>}/>
+    </form>
+</Modals>
   )
 }
 

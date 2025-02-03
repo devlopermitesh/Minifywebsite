@@ -43,7 +43,6 @@ product_id:price.product as string,
 active:price.active,
 currency:price.currency,
 //they sorry a typo 
-// @ts-ignore
 description:price.nickname??'',
 type:price.type,
 unit_amount:price.unit_amount ?? undefined,
@@ -91,7 +90,6 @@ const copyBillingDetails=async({uiid,payment_method}:{uiid:string,payment_method
   const customer=payment_method.customer as string
   const {name,address,phone}=payment_method.billing_details
   if(!name || !address || !phone) return ;
-  //@ts-ignore
   await stripe.customers.update(customer,{name:name??'',phone:phone??'',address:address??{}})
   const {data,error}=await supabaseAdmin.from('users').update({billing_details:{...address},payment_method:{...payment_method[payment_method.type]}}).eq('id',uiid)
   if(error ||!data){
@@ -121,8 +119,7 @@ const manageSubscriptionStatusChange=async(subscriptionId:string,customerId:stri
     metadata:subscription.metadata,
     status: (subscription.status === 'active' || subscription.status === 'trialing' || subscription.status === 'canceled' || subscription.status === 'incomplete' || subscription.status === 'incomplete_expired' || subscription.status === 'past_due' || subscription.status === 'unpaid') ? subscription.status : null,
     price_id:subscription.items.data[0].price.id,
-    //@ts-ignore
-    quantity:subscription.quantity || 0,
+    quantity:subscription.items.data[0].quantity ?? 0,
     created:TodateTime(subscription.created).toISOString(),
     cancel_at_period_end:subscription.cancel_at_period_end,
     cancel_at:subscription.cancel_at ? TodateTime(subscription.cancel_at).toISOString():null,
@@ -133,14 +130,12 @@ const manageSubscriptionStatusChange=async(subscriptionId:string,customerId:stri
     trial_end:subscription.trial_end ? TodateTime(subscription.trial_end).toISOString():null,
     trial_start:subscription.trial_start ? TodateTime(subscription.trial_start).toISOString():null,
     }
-console.log("here what i save in supabase",subscriptionData);
 
-const {data,error}=await supabaseAdmin.from("subscriptions").insert([subscriptionData])
-if(error){
+const {error}=await supabaseAdmin.from("subscriptions").insert([subscriptionData])
+if(error ){
   throw error
 }
 
-console.log("Subscription upserted successfully for user",uuid, subscription)
 
 if(createAction && subscription.default_payment_method && uuid){
   await copyBillingDetails({uiid:uuid,payment_method:subscription.default_payment_method as Stripe.PaymentMethod})

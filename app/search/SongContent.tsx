@@ -5,6 +5,7 @@ import useplaysong from '@/hook/useplaysong'
 import { Songs } from '@/types_db'
 import React from 'react'
 import { FaPlay } from 'react-icons/fa'
+import { twMerge } from 'tailwind-merge'
 interface SongContentProps {
     Songs:Songs[],
     className?:string
@@ -15,7 +16,7 @@ const SongContent : React.FC<SongContentProps> = ({Songs,className}) => {
         return <div className=' w-full h-auto py-10 text-3xl text-neutral-200 font-semibold text-center'>No results found</div>
     }
   return (
-<div className='w-full flex flex-row h-auto justify-around  mt-10'>
+<div className={twMerge('w-full flex flex-row h-auto justify-around  mt-10',className)}>
     <div className='  w-1/2 px-3 py-2 hidden lg:block'>
     <h2 className='text-neutral-200 text-2xl font-semibold'>Top result</h2>
         <TopSearch data={Songs[0]} onclick={() => playSong(Songs[0].id)} />

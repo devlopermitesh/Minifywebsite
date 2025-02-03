@@ -1,13 +1,13 @@
 "use client"
 import Header from "@/components/Header";
 import LikeItem from "@/components/LikeItem";
-import liked from "../../asserts/Images/liked.png"
 import { useEffect, useState } from "react";
 import { Songs } from "@/types_db";
+import liked from "../../asserts/Images/liked.png"
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import PageContent from "./PageContent";
 interface SongResponse {
-  data: any;
+  data: unknown;
 }
 export default function Home() {
   const [songs,setSongs]=useState<Songs[]>([])
@@ -19,7 +19,7 @@ export default function Home() {
       const data = (songs as SongResponse).data;
 
       if(songs){
-setSongs(data)
+setSongs(data as Songs[])
       }
       } catch (error) {
         console.error(error)

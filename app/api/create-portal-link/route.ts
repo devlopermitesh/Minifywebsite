@@ -1,6 +1,6 @@
 import {cookies} from 'next/headers' 
 import {createServerClient} from '@supabase/ssr'
-import { NextRequest, NextResponse } from 'next/server'
+import {  NextResponse } from 'next/server'
 import {stripe} from '@/lib/stripe'
 import { getUrl } from '@/lib/helpers'
 import { retrievCustomer } from '@/lib/SupaBaseAdmin'

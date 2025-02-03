@@ -3,7 +3,6 @@ import Box from '@/components/Box'
 
 import Button from '@/components/Button'
 import Header from '@/components/Header'
-import { useSubscribeModel } from '@/hook/useSubscribeModel'
 import { useUser } from '@/hook/useUser'
 import { Postdata } from '@/lib/helpers'
 import { useRouter } from 'next/navigation'

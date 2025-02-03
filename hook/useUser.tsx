@@ -15,7 +15,7 @@ type UserContextType={
 export const UserContext=React.createContext<UserContextType|undefined>(undefined)
 
 export interface Props{
-[propsProvided:string]:any
+[propsProvided:string]:unknown
 }
 
 export const UserProvider=(props:Props)=>{

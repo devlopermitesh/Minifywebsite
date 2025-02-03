@@ -32,12 +32,13 @@ const Page= () => {
             setisloading(false)
         }
     }
+
     useEffect(()=>{
         if(!user && !isloading){
             router.replace('/')
         }
 getlikedSongs()
-    },[user?.id,supabaseclient,setSongs])
+    },[user?.id,supabaseclient,setSongs,getlikedSongs,isloading,router])
 if(loading){
     return (<div className='flex justify-center items-center h-full w-full'>
 <BiLoader className='animate-spin' size={24}/>

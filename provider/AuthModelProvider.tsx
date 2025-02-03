@@ -23,9 +23,10 @@ else{
 }
 },[session,router,onClose])
   return (
-    <Modals title='login Form' description='please login to continue ' isopen={isOpen} onchange={isOpen?onClose:onOpen}
-     children={<>
-  <Auth magicLink theme='dark' supabaseClient={superbaseclient} appearance={{ theme: ThemeSupa }}  providers={['google', 'facebook']}/></>}/>
+
+    <Modals title='login Form' description='please login to continue ' isopen={isOpen} onchange={isOpen?onClose:onOpen}>
+      <Auth magicLink theme='dark' supabaseClient={superbaseclient} appearance={{ theme: ThemeSupa }}  providers={['google', 'facebook']} />
+    </Modals>
   )
 }
 
